@@ -29,7 +29,6 @@ const barWidth = 2;
 let audioManager;
 
 
-// TODO: FIX VISIBILITY ERROR WHEN SPAM CLICKING PLAY/PAUSE BUTTON
 function playOrPause()
 {
     const toggleableElements = document.querySelectorAll(".toggleable");
@@ -108,6 +107,20 @@ window.addEventListener("keydown", event =>
 });
 
 
+navigator.mediaSession.setActionHandler("play", async () => playOrPause());
+navigator.mediaSession.setActionHandler("pause", async () => playOrPause());
+
+navigator.mediaSession.setActionHandler("previoustrack", async () =>
+{
+    await audioManager.moveToNextOrPreviousSong(false);
+});
+
+navigator.mediaSession.setActionHandler("nexttrack", async () =>
+{
+    await audioManager.moveToNextOrPreviousSong(true);
+});
+
+
 prevButton.addEventListener("click", () => audioManager.moveToNextOrPreviousSong(false));
 backwardsButton.addEventListener("click", () => audioManager.skipBackwardsOrForward(false, SKIP_AMOUNT_SECONDS));
 forwardButton.addEventListener("click", () => audioManager.skipBackwardsOrForward(true, SKIP_AMOUNT_SECONDS));
@@ -136,16 +149,6 @@ window.addEventListener("load", () =>
 
     document.getElementById("audio-player").onplay = () =>
     {
-        // context = new AudioContext();
-        // analyser = context.createAnalyser();
-        //
-        // canvasContext = canvas.getContext("2d");
-        // const source = context.createMediaElementSource(audio);
-        //
-        // source.connect(analyser);
-        // analyser.connect(context.destination);
-        //
-        // console.log("set up");
         if (context === undefined)
         {
             context = new AudioContext();
@@ -156,8 +159,6 @@ window.addEventListener("load", () =>
 
             source.connect(analyser);
             analyser.connect(context.destination);
-
-            // console.log("set up");
         }
 
         animate();
@@ -189,7 +190,6 @@ function animate()
     }
 
     const average = fbcArray.reduce((a, b) => a + b) / fbcArray.length;
-    // console.log(average);
     logoContainer.style.transform = `scale(${1 + average / 1000})`;
 
     const percent = audioManager.getAudioProgressPercent();

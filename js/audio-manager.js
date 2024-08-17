@@ -181,7 +181,7 @@ class AudioManager
     async play()
     {
         await this.#audio.play();
-        console.log("now playing");
+        // console.log("now playing");
     }
 
 
