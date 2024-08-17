@@ -34,6 +34,7 @@ body
     -webkit-user-select: none;
     -ms-user-select: none;
 
+    // Black overlay above background
     &:after
     {
         content: "";
@@ -44,13 +45,8 @@ body
         left: 0;
         background-color: black;
         opacity: .87;
+        z-index: -1;
     }
-}
-
-
-body > *
-{
-    z-index: 1;
 }
 
 
@@ -99,7 +95,7 @@ header
                 {
                     width: 40px;
                     fill: $color2;
-                    transition: fill .2s ease-in-out, border-color .2s ease-in-out;
+                    transition: fill .15s ease-in-out, border-color .15s ease-in-out;
                     border-bottom: 1px solid $color2;
 
                     &:hover
@@ -118,7 +114,7 @@ header
 {
     visibility: hidden;
     opacity: 0;
-    transition: opacity .2s linear;
+    transition: opacity .15s linear;
 }
 
 
@@ -197,9 +193,6 @@ main
 
     #random-section
     {
-        //display: flex;
-        //align-items: center;
-        //padding: 5px 0;
         padding-top: 10px;
     }
 
@@ -252,7 +245,7 @@ main
             {
                 width: 13px;
                 fill: $color2;
-                transition: fill .2s ease-in-out;
+                transition: fill .15s ease-in-out;
 
                 &:hover
                 {

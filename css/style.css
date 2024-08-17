@@ -34,10 +34,7 @@ body:after {
   left: 0;
   background-color: black;
   opacity: 0.87;
-}
-
-body > * {
-  z-index: 1;
+  z-index: -1;
 }
 
 header {
@@ -72,7 +69,7 @@ header #socials li a {
 header #socials li a svg {
   width: 40px;
   fill: #ffffff;
-  transition: fill 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  transition: fill 0.15s ease-in-out, border-color 0.15s ease-in-out;
   border-bottom: 1px solid #ffffff;
 }
 header #socials li a svg:hover {
@@ -83,7 +80,7 @@ header #socials li a svg:hover {
 .toggleable {
   visibility: hidden;
   opacity: 0;
-  transition: opacity 0.2s linear;
+  transition: opacity 0.15s linear;
 }
 
 main {
@@ -174,7 +171,7 @@ main #controls a #pause-icon {
 main #controls a svg {
   width: 13px;
   fill: #ffffff;
-  transition: fill 0.2s ease-in-out;
+  transition: fill 0.15s ease-in-out;
 }
 main #controls a svg:hover {
   fill: #f84b15;
