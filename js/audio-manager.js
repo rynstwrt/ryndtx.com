@@ -72,7 +72,7 @@ const AUDIOS = [
         year: "2023"
     },
     {
-        file: "Transfiguration.wav",
+        file: "Transfiguration.mp3",
         title: "Transfiguration",
         year: "2023"
     },
@@ -120,6 +120,11 @@ const AUDIOS = [
     {
         file: "MakesUsStronger.mp3",
         title: "Makes Us Stronger",
+        year: "2024"
+    },
+    {
+        file: "WDYFW.mp3",
+        title: "WDYFW",
         year: "2024"
     }
 ];

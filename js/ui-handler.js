@@ -157,7 +157,7 @@ window.addEventListener("load", () =>
             source.connect(analyser);
             analyser.connect(context.destination);
 
-            console.log("set up");
+            // console.log("set up");
         }
 
         animate();
@@ -189,7 +189,7 @@ function animate()
     }
 
     const average = fbcArray.reduce((a, b) => a + b) / fbcArray.length;
-    console.log(average);
+    // console.log(average);
     logoContainer.style.transform = `scale(${1 + average / 1000})`;
 
     const percent = audioManager.getAudioProgressPercent();
