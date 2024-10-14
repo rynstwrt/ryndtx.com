@@ -2,6 +2,7 @@ import { AudioManager } from "./audio-manager.js";
 
 const BAR_COLOR = "#f84b15";
 const SKIP_AMOUNT_SECONDS = 15;
+const CONTACT_EMAIL = "mgmt@ryndtx.com";
 
 const logoContainer = document.querySelector("#logo-container");
 
@@ -198,3 +199,12 @@ function animate()
 
 
 window.addEventListener("resize", () => { if (canvas) canvas.width = window.innerWidth; });
+
+
+document.querySelector("#email-button").addEventListener("click", () =>
+{
+    navigator.clipboard.writeText(CONTACT_EMAIL).then(() =>
+    {
+        alert(`Copied email to clipboard! [${CONTACT_EMAIL}]`);
+    });
+});

@@ -102,6 +102,13 @@ header
                     transition: fill .2s ease-in-out, border-color .2s ease-in-out;
                     border-bottom: 1px solid $color2;
 
+                    &#email-button
+                    {
+                        //height: 20px;
+                        width: 30px;
+                        padding-bottom: 3px;
+                    }
+
                     &:hover
                     {
                         fill: $color5;
