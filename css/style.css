@@ -40,6 +40,31 @@ body > * {
   z-index: 1;
 }
 
+#copied-email-popup {
+  position: absolute;
+  top: 35px;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  transition: opacity 0.2s ease-in-out;
+  z-index: 10;
+  pointer-events: none;
+}
+#copied-email-popup.hidden {
+  opacity: 0;
+}
+#copied-email-popup p {
+  padding: 10px 40px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.95);
+  border-radius: 7px;
+  letter-spacing: 0.5px;
+}
+#copied-email-popup p span#email {
+  color: #f84b15;
+}
+
 header {
   position: fixed;
   top: 0;
@@ -78,6 +103,7 @@ header #socials li a svg {
 header #socials li a svg#email-button {
   width: 30px;
   padding-bottom: 3px;
+  cursor: pointer;
 }
 header #socials li a svg:hover {
   fill: #f84b15;

@@ -54,6 +54,39 @@ body > *
 }
 
 
+#copied-email-popup
+{
+    position: absolute;
+    top: 35px;
+    right: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    transition: opacity .2s ease-in-out;
+    z-index: 10;
+    pointer-events: none;
+
+    &.hidden
+    {
+        opacity: 0;
+    }
+
+    p
+    {
+        padding: 10px 40px;
+        text-align: center;
+        background-color: rgba($color4, .95);
+        border-radius: 7px;
+        letter-spacing: 0.5px;
+
+        span#email
+        {
+            color: $color5;
+        }
+    }
+}
+
+
 header
 {
     position: fixed;
@@ -107,6 +140,7 @@ header
                         //height: 20px;
                         width: 30px;
                         padding-bottom: 3px;
+                        cursor: pointer;
                     }
 
                     &:hover
