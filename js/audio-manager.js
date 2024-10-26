@@ -215,14 +215,12 @@ class AudioManager
     getAudioProgressPercent()
     {
         return this.#audio.seek() / this.#audio.duration();
-        // return this.#audio.currentTime / this.#audio.duration;
     }
 
 
     setAudioProgressByPercent(percent)
     {
         this.#audio.seek(this.#audio.duration() * percent);
-        // this.#audio.currentTime = this.#audio.duration * percent;
     }
 
 
