@@ -2,7 +2,6 @@ import { AudioManager } from "./audio-manager.js";
 import { Visualizer } from "./visualizer.js";
 
 
-const DEFAULT_VOLUME = 0.5;
 const SKIP_AMOUNT_SECONDS = 15;
 
 
@@ -140,7 +139,6 @@ sliderContainer.addEventListener("click", event =>
 window.addEventListener("load", () =>
 {
     Howler.usingWebAudio = true;
-    Howler.volume(DEFAULT_VOLUME);
 
     audioManager = new AudioManager(nowPlaying);
 
