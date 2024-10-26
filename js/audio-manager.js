@@ -130,11 +130,11 @@ const AUDIOS = [
 ];
 
 
-const s = new Howl({
-    src: [AUDIO_PATH + "WDYFW.mp3"]
-});
-
-console.log(s);
+// const s = new Howl({
+//     src: [AUDIO_PATH + "WDYFW.mp3"]
+// });
+//
+// console.log(s);
 // s.play
 
 // s.play();

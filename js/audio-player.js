@@ -152,18 +152,23 @@ window.addEventListener("load", () =>
     canvas = document.getElementById("eq-canvas");
     canvas.width = window.innerWidth;
 
+
     if (context === undefined)
     {
+        context = Howler.ctx;
         // context = new AudioContext();
-        context = audioManager.getAudio()._sounds[0]._node.context;
+        // context = audioManager.getAudio()._sounds[0]._node.context;
         analyser = context.createAnalyser();
+        const source = context.createBufferSource();
 
         canvasContext = canvas.getContext("2d");
         // const source = context.createMediaElementSource(audio);
         //
-        // source.connect(analyser);
+        source.connect(analyser);
         analyser.connect(context.destination);
     }
+
+    animate();
 
     // document.getElementById("audio-player").onplay = () =>
     // {
