@@ -3,6 +3,7 @@ import { Visualizer } from "./visualizer.js";
 
 
 const SKIP_AMOUNT_SECONDS = 15;
+const DEFAULT_VOLUME = 0.7;
 
 
 const backwardsButton = document.querySelector("#backward-button");
@@ -95,14 +96,23 @@ shuffleButton.addEventListener("click", () =>
 });
 
 
-window.addEventListener("keydown", event =>
+window.addEventListener("keydown", async event =>
 {
     if (event.key === " ")
+    {
         playOrPause();
-    else if (event.key === "ArrowLeft" && audioManager.isPlaying())
-        audioManager.skipBackwardsOrForward(false, SKIP_AMOUNT_SECONDS);
-    else if (event.key === "ArrowRight" && audioManager.isPlaying())
-        audioManager.skipBackwardsOrForward(true, SKIP_AMOUNT_SECONDS);
+    }
+    else if (audioManager.isPlaying())
+    {
+        if (event.key === "MediaTrackPrevious")
+            await audioManager.moveToNextOrPreviousSong(false);
+        else if (event.key === "MediaTrackNext")
+            await audioManager.moveToNextOrPreviousSong(true);
+        else if (event.key === "ArrowLeft")
+            audioManager.skipBackwardsOrForward(false, SKIP_AMOUNT_SECONDS);
+        else if (event.key === "ArrowRight")
+            audioManager.skipBackwardsOrForward(true, SKIP_AMOUNT_SECONDS);
+    }
 });
 
 
@@ -139,6 +149,7 @@ sliderContainer.addEventListener("click", event =>
 window.addEventListener("load", () =>
 {
     Howler.usingWebAudio = true;
+    Howler.volume(DEFAULT_VOLUME);
 
     audioManager = new AudioManager(nowPlaying);
 

@@ -3,7 +3,6 @@ import { Visualizer } from "./visualizer.js";
 
 const TITLE_PREFIX = "RynDTX - ";
 const TRANSITION_TIME_MS = 150;
-const DEFAULT_VOLUME = 0.7;
 
 
 class AudioManager
@@ -24,7 +23,6 @@ class AudioManager
     async #loadSong(file)
     {
         this.#audio = new Howl({ src: file });
-        this.#audio.volume(DEFAULT_VOLUME);
 
         this.#audio.on("end", () =>
         {
