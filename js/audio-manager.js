@@ -1,3 +1,6 @@
+import { Visualizer } from "./visualizer.js";
+
+
 const TITLE_PREFIX = "Ryn - ";
 const AUDIO_PATH = "assets/audio/";
 const AUDIOS = [
@@ -130,16 +133,6 @@ const AUDIOS = [
 ];
 
 
-// const s = new Howl({
-//     src: [AUDIO_PATH + "WDYFW.mp3"]
-// });
-//
-// console.log(s);
-// s.play
-
-// s.play();
-
-
 class AudioManager
 {
     #songIndex = AUDIOS.length - 1;
@@ -155,7 +148,7 @@ class AudioManager
     }
 
 
-    #loadSong(file)
+    async #loadSong(file)
     {
         this.#audio = new Howl({ src: file });
 
@@ -245,10 +238,12 @@ class AudioManager
         this.#audio.unload();
 
         const currentAudio = AUDIOS[this.#songIndex];
-        this.#loadSong(AUDIO_PATH + currentAudio.file);
+        await this.#loadSong(AUDIO_PATH + currentAudio.file);
         this.#audio.play();
 
         this.#nowPlaying.textContent = this.getTitle();
+
+        Visualizer.setSource(this.#audio._sounds[0]._node);
     }
 
 
@@ -266,7 +261,6 @@ class AudioManager
 
     setLooping(enabled)
     {
-        console.log(enabled);
         this.#audio.loop(enabled);
     }
 
@@ -276,137 +270,6 @@ class AudioManager
         return this.#audio.loop();
     }
 }
-
-
-
-// class AudioManager
-// {
-//     #songIndex = AUDIOS.length - 1;
-//     #audio = undefined;
-//     #shuffling = false;
-//     #looping = false;
-//     #nowPlaying = undefined;
-//
-//
-//     constructor(nowPlaying)
-//     {
-//         this.#nowPlaying = nowPlaying;
-//         this.#audio = new Audio(AUDIO_PATH + AUDIOS[this.#songIndex].file);
-//         this.#audio.id = "audio-player";
-//
-//         this.#audio.onended = async () =>
-//         {
-//             if (this.#looping)
-//             {
-//                 await this.#audio.play();
-//             }
-//             else
-//             {
-//                 await this.moveToNextOrPreviousSong(true);
-//             }
-//         }
-//     }
-//
-//
-//     getAudio()
-//     {
-//         return this.#audio;
-//     }
-//
-//
-//     getTitle()
-//     {
-//         const currentAudio = AUDIOS[this.#songIndex];
-//         return TITLE_PREFIX + currentAudio.title + ` (${currentAudio.year})`
-//     }
-//
-//
-//     isPlaying()
-//     {
-//         return !this.#audio.paused;
-//     }
-//
-//
-//     async play()
-//     {
-//         await this.#audio.play();
-//         // console.log("now playing");
-//     }
-//
-//
-//     pause()
-//     {
-//         this.#audio.pause();
-//     }
-//
-//
-//     skipBackwardsOrForward(isForwards, seconds)
-//     {
-//         this.#audio.currentTime += isForwards ? seconds : -seconds;
-//     }
-//
-//
-//     getAudioProgressPercent()
-//     {
-//         return this.#audio.currentTime / this.#audio.duration;
-//     }
-//
-//
-//     setAudioProgressByPercent(percent)
-//     {
-//         this.#audio.currentTime = this.#audio.duration * percent;
-//     }
-//
-//
-//     async moveToNextOrPreviousSong(isNext)
-//     {
-//         this.#nowPlaying.textContent = "";
-//
-//         if (this.#shuffling)
-//         {
-//             this.#songIndex = Math.floor(Math.random() * AUDIOS.length);
-//         }
-//         else
-//         {
-//             this.#songIndex += isNext ? -1 : 1;
-//
-//             if (this.#songIndex < 0)
-//                 this.#songIndex = AUDIOS.length - 1;
-//             else if (this.#songIndex === AUDIOS.length)
-//                 this.#songIndex = 0;
-//         }
-//
-//         const currentAudio = AUDIOS[this.#songIndex];
-//         this.#audio.src = AUDIO_PATH + currentAudio.file;
-//         await this.#audio.play();
-//
-//         this.#nowPlaying.textContent = this.getTitle();
-//     }
-//
-//
-//     setShuffling(enabled)
-//     {
-//         this.#shuffling = enabled;
-//     }
-//
-//
-//     isShuffling()
-//     {
-//         return this.#shuffling;
-//     }
-//
-//
-//     setLooping(enabled)
-//     {
-//         this.#looping = enabled;
-//     }
-//
-//
-//     isLooping()
-//     {
-//         return this.#looping;
-//     }
-// }
 
 
 export { AudioManager };

@@ -1,11 +1,9 @@
 import { AudioManager } from "./audio-manager.js";
+import { Visualizer } from "./visualizer.js";
 
 
-const BAR_COLOR = "#f84b15";
 const SKIP_AMOUNT_SECONDS = 15;
 
-
-const logoContainer = document.querySelector("#logo-container");
 
 const backwardsButton = document.querySelector("#backward-button");
 const prevButton = document.querySelector("#prev-button");
@@ -24,10 +22,8 @@ const slider = document.querySelector("#progress-slider");
 
 
 let canvas;
-let canvasContext;
 let context = undefined;
 let analyser;
-const barWidth = 2;
 
 let audioManager;
 
@@ -144,51 +140,18 @@ window.addEventListener("load", () =>
 {
     audioManager = new AudioManager(nowPlaying);
 
-    // const audio = audioManager.getAudio();
-    // // const audio = audioManager.getAudio();
-    // //
-    // document.querySelector("#eq-audio").appendChild(audio);
-    //
     canvas = document.getElementById("eq-canvas");
     canvas.width = window.innerWidth;
 
+    Howler.usingWebAudio = true;
 
     if (context === undefined)
     {
-        context = Howler.ctx;
-        // context = new AudioContext();
-        // context = audioManager.getAudio()._sounds[0]._node.context;
-        analyser = context.createAnalyser();
-        const source = context.createBufferSource();
-
-        canvasContext = canvas.getContext("2d");
-        // const source = context.createMediaElementSource(audio);
-        //
-        source.connect(analyser);
-        analyser.connect(context.destination);
+        Visualizer.init(analyser, canvas);
+        Visualizer.setSource(audioManager.getAudio()._sounds[0]._node);
     }
 
     animate();
-
-    // document.getElementById("audio-player").onplay = () =>
-    // {
-    //     if (context === undefined)
-    //     {
-    //         // context = new AudioContext();
-    //         context = audioManager.getAudio()._sounds[0]._node.context;
-    //         analyser = context.createAnalyser();
-    //
-    //         canvasContext = canvas.getContext("2d");
-    //         const source = context.createMediaElementSource(audio);
-    //
-    //         source.connect(analyser);
-    //         analyser.connect(context.destination);
-    //     }
-    //
-    //     animate();
-    // }
-
-
 }, false);
 
 
@@ -199,22 +162,7 @@ function animate()
         || window.mozRequestAnimationFrame(animate)
         || window.webkitRequestAnimationFrame(animate);
 
-    const fbcArray = new Uint8Array(analyser.frequencyBinCount);
-    const barCount = window.innerWidth / 2;
-    analyser.getByteFrequencyData(fbcArray);
-
-    canvasContext.clearRect(0, 0, canvas.width, canvas.height);
-    canvasContext.fillStyle = BAR_COLOR;
-
-    for (let i = 0; i < barCount; ++i)
-    {
-        const barPos = i * 4;
-        const barHeight = -(fbcArray[i] / 2);
-        canvasContext.fillRect(barPos, canvas.height, barWidth, barHeight);
-    }
-
-    const average = fbcArray.reduce((a, b) => a + b) / fbcArray.length;
-    logoContainer.style.transform = `scale(${1 + average / 1000})`;
+    Visualizer.draw();
 
     const percent = audioManager.getAudioProgressPercent();
     slider.style.width = `${sliderContainer.clientWidth * percent}px`;
