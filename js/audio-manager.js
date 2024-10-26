@@ -134,6 +134,7 @@ const s = new Howl({
     src: [AUDIO_PATH + "WDYFW.mp3"]
 });
 
+console.log(s);
 // s.play
 
 // s.play();
@@ -165,8 +166,6 @@ class AudioManager
 
             this.moveToNextOrPreviousSong(true);
         });
-
-        // this.#audio.play();
     }
 
 
@@ -215,13 +214,15 @@ class AudioManager
 
     getAudioProgressPercent()
     {
-        return this.#audio.currentTime / this.#audio.duration;
+        return this.#audio.seek() / this.#audio.duration();
+        // return this.#audio.currentTime / this.#audio.duration;
     }
 
 
     setAudioProgressByPercent(percent)
     {
-        this.#audio.currentTime = this.#audio.duration * percent;
+        this.#audio.seek(this.#audio.duration * percent);
+        // this.#audio.currentTime = this.#audio.duration * percent;
     }
 
 

@@ -145,17 +145,32 @@ window.addEventListener("load", () =>
     audioManager = new AudioManager(nowPlaying);
 
     // const audio = audioManager.getAudio();
-    //
+    // // const audio = audioManager.getAudio();
+    // //
     // document.querySelector("#eq-audio").appendChild(audio);
     //
-    // canvas = document.getElementById("eq-canvas");
-    // canvas.width = window.innerWidth;
-    //
+    canvas = document.getElementById("eq-canvas");
+    canvas.width = window.innerWidth;
+
+    if (context === undefined)
+    {
+        // context = new AudioContext();
+        context = audioManager.getAudio()._sounds[0]._node.context;
+        analyser = context.createAnalyser();
+
+        canvasContext = canvas.getContext("2d");
+        // const source = context.createMediaElementSource(audio);
+        //
+        // source.connect(analyser);
+        analyser.connect(context.destination);
+    }
+
     // document.getElementById("audio-player").onplay = () =>
     // {
     //     if (context === undefined)
     //     {
-    //         context = new AudioContext();
+    //         // context = new AudioContext();
+    //         context = audioManager.getAudio()._sounds[0]._node.context;
     //         analyser = context.createAnalyser();
     //
     //         canvasContext = canvas.getContext("2d");
