@@ -63,7 +63,7 @@
 
     /**
      * Get/set the global volume for all sounds.
-     * @param  {Float} vol Volume from 0.0 to 1.0.
+     * @param  {number} vol Volume from 0.0 to 1.0.
      * @return {Howler/Float}     Returns self or current volume.
      */
     volume: function(vol) {
