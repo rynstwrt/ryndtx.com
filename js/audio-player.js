@@ -143,29 +143,30 @@ sliderContainer.addEventListener("click", event =>
 window.addEventListener("load", () =>
 {
     audioManager = new AudioManager(nowPlaying);
-    const audio = audioManager.getAudio();
 
-    document.querySelector("#eq-audio").appendChild(audio);
-
-    canvas = document.getElementById("eq-canvas");
-    canvas.width = window.innerWidth;
-
-    document.getElementById("audio-player").onplay = () =>
-    {
-        if (context === undefined)
-        {
-            context = new AudioContext();
-            analyser = context.createAnalyser();
-
-            canvasContext = canvas.getContext("2d");
-            const source = context.createMediaElementSource(audio);
-
-            source.connect(analyser);
-            analyser.connect(context.destination);
-        }
-
-        animate();
-    }
+    // const audio = audioManager.getAudio();
+    //
+    // document.querySelector("#eq-audio").appendChild(audio);
+    //
+    // canvas = document.getElementById("eq-canvas");
+    // canvas.width = window.innerWidth;
+    //
+    // document.getElementById("audio-player").onplay = () =>
+    // {
+    //     if (context === undefined)
+    //     {
+    //         context = new AudioContext();
+    //         analyser = context.createAnalyser();
+    //
+    //         canvasContext = canvas.getContext("2d");
+    //         const source = context.createMediaElementSource(audio);
+    //
+    //         source.connect(analyser);
+    //         analyser.connect(context.destination);
+    //     }
+    //
+    //     animate();
+    // }
 
 
 }, false);
