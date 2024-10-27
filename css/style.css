@@ -143,10 +143,6 @@ main #now-playing {
   -ms-user-select: text;
   text-align: center;
   opacity: 1;
-  transition: opacity 0.15s ease-in-out;
-}
-main #now-playing.hidden {
-  opacity: 0 !important;
 }
 main #progress-bar {
   width: 250px;

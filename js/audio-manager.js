@@ -55,7 +55,8 @@ class AudioManager
 
     async play()
     {
-        this.#audio.play();
+        await this.#audio.play();
+        console.log("playing")
     }
 
 
@@ -91,8 +92,7 @@ class AudioManager
 
     async moveToNextOrPreviousSong(isNext)
     {
-        this.#nowPlaying.classList.add("hidden");
-
+        this.#nowPlaying.textContent = "";
 
         if (this.#shuffling)
         {
@@ -108,20 +108,14 @@ class AudioManager
                 this.#songIndex = 0;
         }
 
-        // this.#audio.fade(this.#audio.volume())
         this.#audio.unload();
 
         const currentAudio = AUDIOS[this.#songIndex];
         await this.#loadSong(AUDIO_PATH + currentAudio.file);
-        this.#audio.play();
+        await this.play();
 
-
-        setTimeout(async () =>
-        {
-            this.#nowPlaying.textContent = this.getTitle();
-            this.#nowPlaying.classList.remove("hidden");
-            Visualizer.setSource(this.#audio._sounds[0]._node);
-        }, TRANSITION_TIME_MS);
+        this.#nowPlaying.textContent = this.getTitle();
+        Visualizer.setSource(this.#audio._sounds[0]._node);
     }
 
 

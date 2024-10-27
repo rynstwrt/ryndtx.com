@@ -75,7 +75,7 @@ loopButton.addEventListener("click", () =>
     }
     else
     {
-        audioManager .setLooping(true);
+        audioManager.setLooping(true);
         loopButton.classList.add("pressed");
     }
 });

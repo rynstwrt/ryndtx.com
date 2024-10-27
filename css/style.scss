@@ -196,12 +196,7 @@ main
         -ms-user-select: text;
         text-align: center;
         opacity: 1;
-        transition: opacity .15s ease-in-out;
-
-        &.hidden
-        {
-            opacity: 0 !important;
-        }
+        //transition: opacity .15s ease-in-out;
     }
 
     #progress-bar
