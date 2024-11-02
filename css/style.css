@@ -125,6 +125,7 @@ main {
   justify-content: center;
   align-items: center;
   padding: 10px 25px;
+  position: relative;
 }
 main #logo-container {
   width: 150px;
@@ -136,82 +137,27 @@ main #logo-container img {
   width: 100%;
   height: 100%;
 }
-main #now-playing {
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  letter-spacing: 1px;
-  margin-top: 25px;
-  user-select: text;
-  -webkit-user-select: text;
-  -ms-user-select: text;
-  text-align: center;
-  opacity: 1;
+main #music-player {
+  width: 300px;
+  margin-top: 50px;
 }
-main #progress-bar {
-  width: 250px;
-  height: 10px;
-  background-color: #222128;
-  border-radius: 10px;
-  margin-top: 5px;
-  overflow: hidden;
+@media (min-width: 768px) {
+  main #music-player {
+    width: 400px;
+    margin-top: 75px;
+  }
 }
-main #progress-bar #progress-slider {
-  width: 0;
-  height: 100%;
-  background-color: #f84b15;
+main #music-player span {
+  color: black;
 }
-main #volume-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 25px;
+main #music-player .aplayer-list ol {
+  max-height: 200px;
+  overflow-y: auto;
 }
-main #volume-container label {
-  display: flex;
-  align-items: center;
-  margin-right: 10px;
-}
-main #volume-container label svg {
-  width: 18px;
-  fill: #ffffff;
-  stroke: #ffffff;
-}
-main #random-section {
-  padding-top: 10px;
-}
-main #controls {
-  margin-top: 17px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 2;
-}
-main #controls #play-pause-button svg {
-  width: 22px;
-}
-main #controls #shuffle-button.pressed svg, main #controls #loop-button.pressed svg {
-  fill: #f84b15;
-}
-main #controls #shuffle-button svg, main #controls #loop-button svg {
-  width: 20px;
-}
-main #controls a {
-  cursor: pointer;
-  margin: 0 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-main #controls a #pause-icon {
-  display: none;
-}
-main #controls a svg {
-  width: 13px;
-  fill: #ffffff;
-  transition: fill 0.2s ease-in-out;
-}
-main #controls a svg:hover {
-  fill: #f84b15;
+@media (min-width: 768px) {
+  main #music-player .aplayer-list ol {
+    max-height: 300px;
+  }
 }
 
 #equalizer {
@@ -221,6 +167,7 @@ main #controls a svg:hover {
   position: fixed;
   bottom: 0;
   font-size: 15px;
+  pointer-events: none;
 }
 
 /*# sourceMappingURL=style.css.map */

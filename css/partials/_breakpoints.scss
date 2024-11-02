@@ -1,0 +1,124 @@
+$screen-sm-min: 500px;
+$screen-md-min: 768px;
+$screen-lg-min: 910px;
+$screen-xl-min: 1300px;
+$screen-xxl-min: 1800px;
+
+
+@mixin sm($orientation: null)
+{
+    @if ($orientation == null)
+    {
+        @media (min-width: #{$screen-sm-min}) { @content; }
+    }
+    @else
+    {
+        @media (min-width: #{$screen-sm-min}) and (orientation: #{$orientation}) { @content; }
+    }
+}
+
+
+@mixin md($orientation: null)
+{
+    @if ($orientation == null)
+    {
+        @media (min-width: #{$screen-md-min}) { @content; }
+    }
+    @else
+    {
+        @media (min-width: #{$screen-md-min}) and (orientation: #{$orientation}) { @content; }
+    }
+}
+
+
+@mixin landscapephone()
+{
+    @media (min-width: #{$screen-md-min}) and (max-width: #{$screen-lg-min}) and (orientation: landscape) { @content; }
+}
+
+
+@mixin lg($orientation: null)
+{
+    @if ($orientation == null)
+    {
+        @media (min-width: #{$screen-lg-min}) { @content; }
+    }
+    @else
+    {
+        @media (min-width: #{$screen-lg-min}) and (orientation: #{$orientation}) { @content; }
+    }
+}
+
+
+@mixin xl($orientation: null)
+{
+    @if ($orientation == null)
+    {
+        @media (min-width: #{$screen-xl-min}) { @content; }
+    }
+    @else
+    {
+        @media (min-width: #{$screen-xl-min}) and (orientation: #{$orientation}) { @content; }
+    }
+}
+
+
+@mixin xxl($orientation: null)
+{
+    @if ($orientation == null)
+    {
+        @media (min-width: #{$screen-xxl-min}) { @content; }
+    }
+    @else
+    {
+        @media (min-width: #{$screen-xxl-min}) and (orientation: #{$orientation}) { @content; }
+    }
+}
+
+
+@mixin multiresponsive($keys...)
+{
+    @each $key in $keys
+    {
+        @if ($key == sm)
+        {
+            @include sm { @content }
+        }
+        @else if ($key == smhorizontal)
+        {
+            @include sm(landscape) { @content }
+        }
+        @else if ($key == smvertical)
+        {
+            @include sm(portrait) { @content }
+        }
+
+        @else if ($key == md)
+        {
+            @include md { @content }
+        }
+        @else if ($key == mdhorizontal)
+        {
+            @include md(landscape) { @content }
+        }
+        @else if ($key == mdvertical)
+        {
+            @include md(portrait) { @content }
+        }
+
+        @else if ($key == lg)
+        {
+            @include lg { @content }
+        }
+
+        @else if ($key == xl)
+        {
+            @include xl { @content }
+        }
+
+        @else if ($key == xxl)
+        {
+            @include xxl { @content }
+        }
+    }
+}
