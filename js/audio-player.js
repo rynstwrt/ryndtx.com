@@ -5,7 +5,7 @@ const songs = [];
 for (const audio of AUDIOS)
 {
     const song = {
-        name: audio.title,
+        name: `${audio.title} (${audio.year})`,
         artist: "RynDTX  ",
         url: AUDIO_PATH + audio.file,
         theme: "#FF6600"
