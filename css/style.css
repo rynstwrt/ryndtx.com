@@ -34,6 +34,7 @@ body:after {
   left: 0;
   background-color: black;
   opacity: 0.87;
+  z-index: -2;
 }
 
 body > * {
@@ -165,9 +166,12 @@ main #music-player .aplayer-list ol {
   flex-direction: column;
   align-items: center;
   position: fixed;
+  right: 0;
   bottom: 0;
+  left: 0;
   font-size: 15px;
   pointer-events: none;
+  z-index: -1;
 }
 
 /*# sourceMappingURL=style.css.map */
