@@ -7,45 +7,45 @@ const canvas = document.querySelector("#eq-canvas");
 
 class Visualizer
 {
-    static analyser = undefined;
-    static canvas = undefined;
-    static canvasContext = undefined;
+    analyser = undefined;
+    canvas = undefined;
+    canvasContext = undefined;
 
-
-    static init(audioElement)
+    
+    constructor(audioElement)
     {
         canvas.width = window.innerWidth;
 
         const audioContext = new AudioContext();
-        Visualizer.analyser = audioContext.createAnalyser();
+        this.analyser = audioContext.createAnalyser();
 
-        Visualizer.canvasContext = canvas.getContext("2d");
+        this.canvasContext = canvas.getContext("2d");
 
         const source = audioContext.createMediaElementSource(audioElement);
-        source.connect(Visualizer.analyser);
-        Visualizer.analyser.connect(audioContext.destination);
+        source.connect(this.analyser);
+        this.analyser.connect(audioContext.destination);
     }
+    
 
-
-    static animate()
+    animate()
     {
-        window.RequestAnimationFrame = window.requestAnimationFrame(Visualizer.animate)
-            || window.msRequestAnimationFrame(Visualizer.animate)
-            || window.mozRequestAnimationFrame(Visualizer.animate)
-            || window.webkitRequestAnimationFrame(Visualizer.animate);
+        window.RequestAnimationFrame = window.requestAnimationFrame(() => this.animate())
+            || window.msRequestAnimationFrame(() => this.animate())
+            || window.mozRequestAnimationFrame(() => this.animate())
+            || window.webkitRequestAnimationFrame(() => this.animate());
 
-        const fbcArray = new Uint8Array(Visualizer.analyser.frequencyBinCount);
+        const fbcArray = new Uint8Array(this.analyser.frequencyBinCount);
         const barCount = window.innerWidth / 2;
-        Visualizer.analyser.getByteFrequencyData(fbcArray);
+        this.analyser.getByteFrequencyData(fbcArray);
 
-        Visualizer.canvasContext.clearRect(0, 0, canvas.width, canvas.height);
-        Visualizer.canvasContext.fillStyle = BAR_COLOR;
+        this.canvasContext.clearRect(0, 0, canvas.width, canvas.height);
+        this.canvasContext.fillStyle = BAR_COLOR;
 
         for (let i = 0; i < barCount; ++i)
         {
             const barPos = i * 4;
             const barHeight = -(fbcArray[i] / 2);
-            Visualizer.canvasContext.fillRect(barPos, canvas.height, BAR_WIDTH, barHeight);
+            this.canvasContext.fillRect(barPos, canvas.height, BAR_WIDTH, barHeight);
         }
 
         const average = fbcArray.reduce((a, b) => a + b) / fbcArray.length;

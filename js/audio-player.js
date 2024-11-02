@@ -22,7 +22,5 @@ const aPlayer = new APlayer({
 });
 
 
-Visualizer.init(aPlayer.audio);
-Visualizer.animate();
-
-
+const visualizer = new Visualizer(aPlayer.audio);
+visualizer.animate();
