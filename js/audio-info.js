@@ -1,3 +1,4 @@
+const ARTIST_NAME = "RynDTX";
 const AUDIO_PATH = "assets/audio/";
 const AUDIOS = [
     {
