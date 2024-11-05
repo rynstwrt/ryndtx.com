@@ -17,7 +17,8 @@ for (const audio of AUDIOS)
 
 const aPlayer = new APlayer({
     container: document.querySelector("#music-player"),
-    listFolded: false,
+    listFolded: true,
+    listMaxHeight: "230px",
     audio: songs.reverse()
 });
 

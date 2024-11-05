@@ -114,12 +114,6 @@ header #socials li a svg#apple-music-icon {
   height: 34px;
 }
 
-.toggleable {
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 0.2s linear;
-}
-
 main {
   display: flex;
   flex-direction: column;
@@ -140,25 +134,21 @@ main #logo-container img {
 }
 main #music-player {
   width: 300px;
-  margin-top: 50px;
+  margin-top: 40px;
 }
 @media (min-width: 768px) {
   main #music-player {
     width: 400px;
-    margin-top: 75px;
+    margin-top: 50px;
+  }
+}
+@media (min-width: 910px) {
+  main #music-player {
+    margin-top: 60px;
   }
 }
 main #music-player span {
   color: black;
-}
-main #music-player .aplayer-list ol {
-  max-height: 200px;
-  overflow-y: auto;
-}
-@media (min-width: 768px) {
-  main #music-player .aplayer-list ol {
-    max-height: 300px;
-  }
 }
 
 #equalizer {

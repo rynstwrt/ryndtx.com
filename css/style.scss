@@ -163,14 +163,6 @@ header
 }
 
 
-.toggleable
-{
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity .2s linear;
-}
-
-
 main
 {
     display: flex;
@@ -197,28 +189,22 @@ main
     #music-player
     {
         width: 300px;
-        margin-top: 50px;
+        margin-top: 40px;
 
         @include md()
         {
             width: 400px;
-            margin-top: 75px;
+            margin-top: 50px;
+        }
+
+        @include lg()
+        {
+            margin-top: 60px;
         }
 
         span
         {
             color: $color4;
-        }
-
-        .aplayer-list ol
-        {
-            max-height: 200px;
-            overflow-y: auto;
-
-            @include md()
-            {
-                max-height: 300px;
-            }
         }
     }
 }
