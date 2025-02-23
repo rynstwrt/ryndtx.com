@@ -1,3 +1,3 @@
 # ryndtx.com
 
-Repo for www.ryndtx.com
+Repo for https://ryndtx.com
