@@ -20,10 +20,11 @@ html, body
 body
 {
     background-color: $color4;
-    background-image: url("../assets/images/sanctuary.webp");
+    background-image: url("../assets/images/rynheadshot.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    background-attachment: fixed;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -43,7 +44,7 @@ body
         bottom: 0;
         left: 0;
         background-color: black;
-        opacity: .87;
+        opacity: .91;
     }
 }
 
@@ -54,36 +55,11 @@ body > *
 }
 
 
-#copied-email-popup
+a
 {
-    position: absolute;
-    top: 35px;
-    right: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    transition: opacity .2s ease-in-out;
-    z-index: 10;
-    pointer-events: none;
-
-    &.hidden
-    {
-        opacity: 0;
-    }
-
-    p
-    {
-        padding: 10px 40px;
-        text-align: center;
-        background-color: rgba($color4, .95);
-        border-radius: 7px;
-        letter-spacing: 0.5px;
-
-        span#email
-        {
-            color: $color5;
-        }
-    }
+    color: $color5;
+    text-decoration: none;
+    font-weight: inherit;
 }
 
 
@@ -116,56 +92,6 @@ header
             letter-spacing: 1px;
         }
     }
-
-    #socials
-    {
-        display: flex;
-        list-style: none;
-
-        li
-        {
-            a
-            {
-                margin-left: 20px;
-
-                &:hover > svg
-                {
-                    fill: $color5;
-                }
-
-                svg
-                {
-                    height: 35px;
-                    fill: $color2;
-                    transition: fill .12s ease-in-out, border-color .2s ease-in-out;
-
-                    &#email-icon
-                    {
-                        padding-bottom: 3px;
-                        cursor: pointer;
-                    }
-
-                    &#spotify-icon
-                    {
-                        height: 33px;
-                    }
-
-                    &#apple-music-icon
-                    {
-                        height: 34px;
-                    }
-                }
-            }
-        }
-    }
-}
-
-
-.toggleable
-{
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity .2s linear;
 }
 
 
@@ -179,7 +105,7 @@ main
 
     #logo-container
     {
-        width: 150px;
+        width: 170px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -191,135 +117,36 @@ main
         }
     }
 
-    #now-playing
+    #links
     {
-        font-family: $font-1;
-        font-weight: $fw-3;
-        letter-spacing: 1px;
-        margin-top: 25px;
-        user-select: text;
-        -webkit-user-select: text;
-        -ms-user-select: text;
-        text-align: center;
-        opacity: 1;
-        //transition: opacity .15s ease-in-out;
-    }
-
-    #progress-bar
-    {
-        width: 250px;
-        height: 10px;
-        background-color: $color3;
-        border-radius: 10px;
-        margin-top: 5px;
-        overflow: hidden;
-
-        #progress-slider
-        {
-            width: 0;
-            //width: 100px;
-            height: 100%;
-            background-color: $color5;
-        }
-    }
-
-    #volume-container
-    {
+        margin-top: 30px;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin-top: 25px;
-
-        label
-        {
-            display: flex;
-            align-items: center;
-            margin-right: 10px;
-
-            svg
-            {
-                width: 18px;
-                fill: $color2;
-                stroke: $color2;
-            }
-        }
-    }
-
-    #random-section
-    {
-        //display: flex;
-        //align-items: center;
-        //padding: 5px 0;
-        padding-top: 10px;
-    }
-
-    #controls
-    {
-        margin-top: 17px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 2;
-
-        #play-pause-button
-        {
-            svg 
-            {
-                width: 22px;
-            }
-        }
-
-        #shuffle-button, #loop-button
-        {
-            &.pressed
-            {
-                svg
-                {
-                    fill: $color5;
-                }
-            }
-
-            svg
-            {
-                width: 20px;
-            }
-        }
 
         a
         {
-            cursor: pointer;
-            margin: 0 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            letter-spacing: 2px;
+            font-weight: 200;
+            font-size: 15px;
+            margin: 2px 0;
 
-            #pause-icon
+            &:before
             {
-                display: none;
+                content: "<"
             }
 
-            svg
+            &:after
             {
-                width: 13px;
-                fill: $color2;
-                transition: fill .2s ease-in-out;
+                content: ">";
+            }
 
-                &:hover
-                {
-                    fill: $color5;
-                }
+            &:hover
+            {
+                text-decoration: underline;
+                text-decoration-style: dotted;
             }
         }
     }
-}
-
-
-#equalizer
-{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: fixed;
-    bottom: 0;
-    font-size: 15px;
 }
