@@ -20,7 +20,8 @@ html, body
 body
 {
     background-color: $color4;
-    background-image: url("../assets/images/rynheadshot.png");
+    //background-image: url("../assets/images/rynheadshot.png");
+    background-image: url("../assets/images/sanctuary.webp");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -44,7 +45,7 @@ body
         bottom: 0;
         left: 0;
         background-color: black;
-        opacity: .91;
+        opacity: .9;
     }
 }
 
@@ -102,6 +103,7 @@ main
     justify-content: center;
     align-items: center;
     padding: 10px 25px;
+    width: 100%;
 
     #logo-container
     {
@@ -124,28 +126,26 @@ main
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        width: 100%;
 
         a
         {
-            letter-spacing: 2px;
-            font-weight: 200;
+            letter-spacing: 1px;
+            font-weight: 300;
             font-size: 15px;
-            margin: 2px 0;
+            margin: 5px 0;
+            background-color: rgba(white, 0.05);
+            padding: 7px 0;
+            border-radius: 5px;
+            width: 100%;
+            text-align: center;
+            transition: background-color .15s ease-out;
 
-            &:before
-            {
-                content: "<"
-            }
-
-            &:after
-            {
-                content: ">";
-            }
+            max-width: 300px;
 
             &:hover
             {
-                text-decoration: underline;
-                text-decoration-style: dotted;
+                background-color: rgba(white, 0.08);
             }
         }
     }

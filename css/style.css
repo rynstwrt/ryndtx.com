@@ -11,7 +11,7 @@ html, body {
 
 body {
   background-color: black;
-  background-image: url("../assets/images/rynheadshot.png");
+  background-image: url("../assets/images/sanctuary.webp");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -34,7 +34,7 @@ body:after {
   bottom: 0;
   left: 0;
   background-color: black;
-  opacity: 0.91;
+  opacity: 0.9;
 }
 
 body > * {
@@ -76,6 +76,7 @@ main {
   justify-content: center;
   align-items: center;
   padding: 10px 25px;
+  width: 100%;
 }
 main #logo-container {
   width: 170px;
@@ -93,22 +94,23 @@ main #links {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 main #links a {
-  letter-spacing: 2px;
-  font-weight: 200;
+  letter-spacing: 1px;
+  font-weight: 300;
   font-size: 15px;
-  margin: 2px 0;
-}
-main #links a:before {
-  content: "<";
-}
-main #links a:after {
-  content: ">";
+  margin: 5px 0;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 7px 0;
+  border-radius: 5px;
+  width: 100%;
+  text-align: center;
+  transition: background-color 0.15s ease-out;
+  max-width: 300px;
 }
 main #links a:hover {
-  text-decoration: underline;
-  text-decoration-style: dotted;
+  background-color: rgba(255, 255, 255, 0.08);
 }
 
 /*# sourceMappingURL=style.css.map */
